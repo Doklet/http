@@ -11,38 +11,32 @@
         <button type="button" class="btn btn-default">...</button>
       </div>
     </div> -->
-    <h4>RestAccount</h4>
+    <h4>HTTP <small>{{account.name}}</small></h4>
   </div>
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
         <div class="pull-right">
           <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default">Text</button>
-            <button type="button" class="btn btn-default">Json</button>
-            <button type="button" class="btn btn-default">Xml</button>
+            <button ng-repeat="c in CONTENT" type="button" class="btn btn-default" ng-click="in.content=c" ng-class="{'active' : c===in.content}">{{c|uppercase}}</button>
           </div>
           <div class="btn-group" role="group">
-            <button type="button" class="btn btn-primary">Run</button>
+            <button type="button" class="btn btn-primary" ng-click="run()">Run</button>
           </div>
         </div>
         <div class="input-group">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GET <span class="caret"></span></button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{in.method|uppercase}} <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><a>GET</a></li>
-              <li><a>POST</a></li>
-              <li><a>PUT</a></li>
-              <li><a>DELETE</a></li>
-              <li><a>HEAD</a></li>
+              <li ng-repeat="method in METHOD" ng-click="in.method=method" ng-class="{'active' : method===in.method}"><a>{{method | uppercase}}</a></li>
             </ul>
           </div>
           <!-- /btn-group -->
-          <input type="text" class="form-control" aria-label="...">
+          <input type="text" class="form-control" ng-model="in.url"/>
         </div>
         <!-- /input-group -->
       </div>
-      <textarea class="form-control myTextArea" rows="10">{{out.output}}</textarea>
+      <textarea class="form-control myTextArea" rows="10">{{in.text}}</textarea>
     </div>
   </div>
   <!-- Default panel contents -->
@@ -57,7 +51,7 @@
         </div>
         <h5>Result</h5>
       </div>
-      <textarea class="form-control myTextArea" rows="10">{{out.output}}</textarea>
+      <textarea class="form-control myTextArea" rows="10">{{out.result}}</textarea>
     </div>
   </div>
 </div>

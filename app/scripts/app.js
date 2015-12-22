@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name httpApp
- * @description
- * # httpApp
- *
- * Main module of the application.
- */
 angular
   .module('httpApp', [
     'ngAnimate',
@@ -31,3 +23,7 @@ angular
         redirectTo: '/'
       });
   });
+
+angular.module('httpApp').config(function($httpProvider) {
+  $httpProvider.interceptors.push('AuthInterceptor');
+});
