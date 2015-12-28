@@ -1,11 +1,11 @@
 'use strict';
 
-
 angular.module('httpApp')
   .service('Client', function() {
 
     var _sessionId;
     var _account;
+    var _doclets;
 
     this.getSessionId = function() {
       return _sessionId;
@@ -21,6 +21,14 @@ angular.module('httpApp')
 
     this.setAccount = function(account) {
       _account = account;
+    };
+
+    this.setDoclets = function(doclets) {
+      _doclets = doclets;
+    };
+
+    this.getDoclets = function() {
+      return _doclets;
     };
 
   });
